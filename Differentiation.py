@@ -8,6 +8,11 @@ priorities = {'+': 1, '-': 1, '*': 2, '/': 2, '^': 3, '(': 0, ')': 0}
 variable = 'x'
 
 
+def set_var(var):
+    global variable
+    variable = var
+
+
 def diff_variable():
     return '1'
 

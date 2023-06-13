@@ -5,7 +5,6 @@ smbls = ['+', '-', '*', '/', '^', 'sin', 'cos', 'log', 'ln', 'tg', 'ctg',
          'arcsin', 'arccos', 'arctg', 'arcctg', '(', ')', 'x', 'y', 'e']
 bin_func = ['+', '-', '*', '/', '^']
 prefix_func = ['sin', 'cos', 'ln', 'tg', 'ctg', 'arcsin', 'arccos', 'arctg', 'arcctg', 'log']
-variable = 'x'
 
 
 def input_is_correct(input):
