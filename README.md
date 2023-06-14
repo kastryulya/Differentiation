@@ -60,4 +60,3 @@ python3 diff.py '2x^3-4x^2+12x' -var 'y' -ord 3
 * `Test/Incorrect_input_test.py` - Тестирование обработки входных выражений
 
 Покрытие тестами составляет 98%.
-![Снимок экрана 2023-06-14 в 20.22.07.png](..%2F..%2F..%2F..%2F..%2F..%2F..%2Fvar%2Ffolders%2Fy1%2Fqcvcdrc51mddpms7hj33hk_h0000gp%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_My1q6C%2F%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202023-06-14%20%D0%B2%2020.22.07.png)
