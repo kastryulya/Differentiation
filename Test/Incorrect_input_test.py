@@ -63,17 +63,31 @@ class IncorrectSmblsTest(unittest.TestCase):
 
 class IncorrectInputTest(unittest.TestCase):
     def test_input_is_correct_case1(self):
-        inp = get_list_of_operations_and_operands('()log(e)(5x^2)')
-        self.assertEqual(input_is_correct(inp), [False, 1])
+        self.assertEqual(input_is_correct('()log(e)(5x^2)'), [False, 1])
 
     def test_input_is_correct_case2(self):
-        inp = get_list_of_operations_and_operands('+log(e)(5x^2)')
-        self.assertEqual(input_is_correct(inp), [False, 0])
+        self.assertEqual(input_is_correct('+log(e)(5x^2)'), [False, 0])
 
     def test_input_is_correct_case3(self):
-        inp = get_list_of_operations_and_operands('log(ei)((5x^2)')
-        self.assertEqual(input_is_correct(inp), [False, 2])
+        self.assertEqual(input_is_correct('log(ei)((5x^2)'), [False, 2])
 
     def test_input_is_correct_case4(self):
-        inp = get_list_of_operations_and_operands('(18sin(3x^5))/98ln(45x)')
-        self.assertEqual(input_is_correct(inp), [True, 0])
+        self.assertEqual(input_is_correct('(18sin(3x^5))/98ln(45x)'), [True, 0])
+
+    def test_input_is_correct_case5(self):
+        self.assertEqual(input_is_correct('2xy'), [False, 1])
+
+    def test_input_is_correct_case6(self):
+        self.assertEqual(input_is_correct('2yx'), [False, 1])
+
+    def test_input_is_correct_case7(self):
+        self.assertEqual(input_is_correct('12+2ex'), [False, 4])
+
+    def test_input_is_correct_case8(self):
+        self.assertEqual(input_is_correct('1+2ey'), [False, 3])
+
+    def test_input_is_correct_case9(self):
+        self.assertEqual(input_is_correct('12-12x+2xe'), [False, 8])
+
+    def test_input_is_correct_case10(self):
+        self.assertEqual(input_is_correct('1-12x+2xe'), [False, 7])

@@ -6,7 +6,7 @@ operations = ['+', '-', '*', '/', '^', 'sin', 'cos', 'log', 'ln', 'tg', 'ctg',
 bin_func = ['+', '-', '*', '/', '^', 'log']
 prefix_func = ['sin', 'cos', 'tg', 'ctg', 'arcsin', 'arccos', 'arctg', 'arcctg', 'ln']
 priorities = {'+': 1, '-': 1, '*': 2, '/': 2, '^': 3, '(': 0, ')': 0, 'log': 3}
-variable = 'x'
+variables = 'xy'
 
 
 # сравнение приоритетов операций
@@ -22,7 +22,7 @@ def opn(input):
 
     while lst:
         smbl = lst.pop(0)
-        if smbl not in operations or smbl == variable:
+        if smbl not in operations or smbl in variables:
             result.append(smbl)
         elif smbl in prefix_func:
             stack.append(smbl)
@@ -36,7 +36,7 @@ def opn(input):
                     if head_of_stack != '(':
                         result.append(head_of_stack)
             except IndexError:
-                print('Wrong input')
+                pass
         elif smbl in bin_func:
             try:
                 while stack[-1] in prefix_func or compare_priorities(stack[-1], smbl):
@@ -55,7 +55,7 @@ def opn(input):
 def from_opn(input):
     stack = []
     for i in input:
-        if isNumber(i) or i == variable or i == 'e':
+        if isNumber(i) or i in variables or i == 'e':
             stack.append(i)
             continue
         elif i in bin_func:
@@ -82,7 +82,7 @@ def adding_parentheses(input):
                 if not isNumber(input_with_parentheses[-1]):
                     input_with_parentheses += '('
                 input_with_parentheses += char
-                if input[i + 1] in operations or input[i + 1] == variable:
+                if input[i + 1] in operations or input[i + 1] in variables:
                     input_with_parentheses += ')'
             else:
                 input_with_parentheses += char
@@ -105,7 +105,7 @@ def get_list_of_operations_and_operands(input):
 
     while True:
         try:
-            if input[i] == variable or input[i] in operations:
+            if input[i] in variables or input[i] in operations:
                 list_of_operations_and_operands.append(input[i])
                 i += 1
             elif isNumber(input[i]):
@@ -157,7 +157,7 @@ def add_mult_signs(input):
         prev_input = temp_input
         count_of_mul += 1
 
-    regex3 = rf'{variable}\(.*?\)+'  # нахождение скобок как множителей
+    regex3 = rf'[xy]\(.*?\)+'  # нахождение скобок как множителей
     count_of_mul = 0
     for m in re.finditer(regex3, prev_input):
         temp_input = prev_input[:m.start() + 1 + count_of_mul]

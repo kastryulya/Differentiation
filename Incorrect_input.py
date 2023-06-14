@@ -1,14 +1,35 @@
 import sys
 from Differentiation import isNumber
+from Rpn import get_list_of_operations_and_operands
 
 smbls = ['+', '-', '*', '/', '^', 'sin', 'cos', 'log', 'ln', 'tg', 'ctg',
          'arcsin', 'arccos', 'arctg', 'arcctg', '(', ')', 'x', 'y', 'e']
 bin_func = ['+', '-', '*', '/', '^']
 prefix_func = ['sin', 'cos', 'ln', 'tg', 'ctg', 'arcsin', 'arccos', 'arctg', 'arcctg', 'log']
-variable = 'x'
 
 
-def input_is_correct(input):
+def input_is_correct(inp):
+    idx1 = inp.find('xy')
+    idx2 = inp.find('yx')
+    idx3 = inp.find('ex')
+    idx4 = inp.find('xe')
+    idx5 = inp.find('ey')
+    idx6 = inp.find('ye')
+
+    if idx1 != -1:
+        return [False, idx1]
+    elif idx2 != -1:
+        return [False, idx2]
+    elif idx3 != -1:
+        return [False, idx3]
+    elif idx4 != -1:
+        return [False, idx4]
+    elif idx5 != -1:
+        return [False, idx5]
+    elif idx6 != -1:
+        return [False, idx6]
+
+    input = get_list_of_operations_and_operands(inp)
     signs = signs_are_correct(input)
     brackets = brackets_are_correct(input)
     smbls = smbls_are_correct(input)
