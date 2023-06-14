@@ -36,7 +36,7 @@ def opn(input):
                     if head_of_stack != '(':
                         result.append(head_of_stack)
             except IndexError:
-                print('Wrong input')
+                pass
         elif smbl in bin_func:
             try:
                 while stack[-1] in prefix_func or compare_priorities(stack[-1], smbl):
